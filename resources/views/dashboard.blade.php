@@ -15,7 +15,7 @@
        <table class="text-center w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-4 px-6 bg-stone-700 font-bold uppercase text-2xl text-white border-b border-grey-light">学習内容の振り返り</th>
+                <th class="py-4 px-6 bg-grey-600 font-bold uppercase text-2xl text-white border-b border-grey-light">学習内容の振り返り</th>
               </tr>
             </thead>
             <tbody>
@@ -54,7 +54,7 @@
              <table class="mt-28 text-center w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-4 px-6 bg-stone-700 font-bold text-2xl text-white border-b border-grey-light">自分がした質問一覧</th>
+                <th class="py-4 px-6 bg-grey-600 font-bold text-2xl text-white border-b border-grey-light">自分がした質問一覧</th>
               </tr>
             </thead>
             <tbody>

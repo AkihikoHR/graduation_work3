@@ -164,7 +164,7 @@
           
             
           <div class="my-20 border-t border-grey-light">
-            <a href="{{ route('group.show',$group->id) }}" class="block text-center max-w-7xl mx-auto sm:w-10/12 md:w-8/12 lg:w-6/12 py-3 mt-6 font-medium tracking-widest text-white uppercase bg-orange-500 shadow-lg focus:outline-none hover:bg-orange-400 hover:shadow-none">
+            <a href="{{ route('group.show',$group->id) }}" class="block text-center max-w-7xl mx-auto sm:w-10/12 md:w-8/12 lg:w-6/12 py-3 mt-6 font-medium tracking-widest text-white uppercase bg-amber-500 shadow-lg focus:outline-none hover:bg-amber-300 hover:shadow-none">
               グループの詳細
             </a>
             <a href="{{ route('group.mygroup') }}" class="block text-center max-w-7xl mx-auto sm:w-10/12 md:w-8/12 lg:w-6/12 py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
