@@ -8,7 +8,7 @@
  
             <div class="relative items-top justify-center min-h-screen bg-teal-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
                 @if (Route::has('login'))
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    <div class="fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
                             <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ダッシュボード</a>
                         @else
@@ -25,10 +25,16 @@
                     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
                       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                          <table class="text-center w-full border-collapse">
-                            <thead>
+                          <div class="text-center">
+                            <h3 class="text-2xl font-bold leading-10">現在、{{$groups->count()}}組のグループが活動しています！</h3>
+                            <p class="text-lg leading-10">○○は同じ目標を持った仲間と一緒に学ぶことができるコミュニティです</p>
+                            <p class="text-lg leading-10">ユーザー登録して自分に合った学習グループを探してみましょう！</p>
+                          </div>
+  
+                          <table class="mt-10 text-center w-full border-collapse">
+                              <thead>
                               <tr>
-                                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">活動中のグループ</th>
+                                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">活動中のグループ一覧</th>
                               </tr>
                             </thead>
                             <tbody>

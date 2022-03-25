@@ -69,4 +69,14 @@ class User extends Authenticatable
       return $this->hasOne(Profile::class);
     }
     
+    public function my_posts()
+    {
+     return $this->hasMany(Post::class)->orderBy('updated_at', 'desc');
+    }
+    
+    public function my_questions()
+    {
+     return $this->hasMany(Question::class)->orderBy('updated_at', 'desc');
+    }
+    
 }

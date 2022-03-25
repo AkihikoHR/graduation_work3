@@ -163,10 +163,12 @@ class GroupController extends Controller
     {
          $group = Group::find($id);
          $posts = Group::find($id)->group_posts;
+         $questions = Group::find($id)->group_questions;
          $members = Group::find($id)->users;
          return view('group.room',[
            'group' => $group,
            'posts' => $posts,
+           'questions' => $questions,
            'members' => $members
            ]);
     }

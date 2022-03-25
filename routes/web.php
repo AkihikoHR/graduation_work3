@@ -6,6 +6,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use App\Models\Group;
 use App\Models\Profile;
 use App\Models\User;
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::resource('group', GroupController::class);
   Route::resource('post', PostController::class);
   Route::resource('profile', ProfileController::class);
+  Route::resource('question', QuestionController::class);
   
 });
 
@@ -48,8 +50,14 @@ Route::get('/dashboard', function ()
 {
     $user_id = Auth::user()->id;
     $user = User::find($user_id);
+    $posts = User::find($user_id)->my_posts;
+    $questions = User::find($user_id)->my_questions;
+    
     if ($user->profile){
-       return view('dashboard');
+       return view('dashboard', [
+       'posts' => $posts,
+       'questions' => $questions
+       ]);
     } else {
        return view('profile.create');
     }

@@ -35,4 +35,9 @@ class Group extends Model
      return $this->hasMany(Post::class)->orderBy('updated_at', 'desc');
     }
     
+    public function group_questions()
+    {
+     return $this->hasMany(Question::class)->orderBy('updated_at', 'desc');
+    }
+    
 }
