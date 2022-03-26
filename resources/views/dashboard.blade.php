@@ -22,7 +22,9 @@
               @foreach ($posts as $post)
               <tr class="hover:bg-grey-lighter">
                 <td class="py-4 px-6 border-b border-grey-light flex items-center">
-                
+                  <div class="w-1/12">
+                       <img src="{{ asset('storage/profile_icon.png') }}" alt="プロフィール画像" class="w-16">
+                  </div>
                   <div class="px-3 w-11/12">
                     <h3 class="text-left font-bold text-lg text-grey-dark">{{$post->post}}</h3>
                     <h3 class="text-left text-lg text-grey-dark">{{$post->description}}</h3>
@@ -68,7 +70,9 @@
               @foreach ($questions as $question)
               <tr class="hover:bg-grey-lighter">
                 <td class="py-4 px-6 border-b border-grey-light flex items-center">
-               
+                  <div class="w-1/12">
+                       <img src="{{ asset('storage/profile_icon.png') }}" alt="プロフィール画像" class="w-16">
+                  </div>
                   <div class="px-3 w-11/12">
                     <h3 class="text-left font-bold text-lg text-grey-dark">{{$question->question}}</h3>
                     <h3 class="text-left text-lg text-grey-dark">{{$question->description}}</h3>
@@ -91,12 +95,20 @@
                         </form>
                         @endif
                         
+                        @if ($question->image)
+                        <p class="text-red-600 font-bold">画像あり</p>
+                        @endif
+                        
                          <form class="ml-5 mb-1" action="{{ route('question.show',$question->id) }}" method="GET" class="text-left">
                           @csrf
                            <button type="submit" class="ml-4 w-full bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
                             もっと見る
                            </button>
-                        </form>
+                         </form>
+                         
+                         <p class="ml-4 text-orange-700 font-bold">
+                          （回答：{{$question->all_answers->count()}}件）
+                         </p>
                     </div>
                   </div>
                 </td>

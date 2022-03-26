@@ -157,7 +157,7 @@
             {{ __('マイページ') }}
           </x-responsive-nav-link>
         </form>
-        <form method="POST" action="{{ route('profile.create') }}">
+        <form method="GET" action="{{ route('profile.create') }}">
           @csrf
           <x-responsive-nav-link :href="route('profile.create')" onclick="event.preventDefault();
                                         this.closest('form').submit();">

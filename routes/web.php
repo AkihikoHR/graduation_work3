@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 use App\Models\Group;
 use App\Models\Profile;
 use App\Models\User;
@@ -31,11 +32,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/group/mygroup', [GroupController::class, 'mygroup'])->name('group.mygroup');
   Route::get('/group/admin', [GroupController::class, 'admin'])->name('group.admin');
   Route::get('/group/{group}/room', [GroupController::class, 'room'])->name('group.room');
-  
+  Route::get('/answer/{question}/reply', [AnswerController::class, 'reply'])->name('answer.reply');
+
   Route::resource('group', GroupController::class);
   Route::resource('post', PostController::class);
   Route::resource('profile', ProfileController::class);
   Route::resource('question', QuestionController::class);
+  Route::resource('answer', AnswerController::class);
   
 });
 

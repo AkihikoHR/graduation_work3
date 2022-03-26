@@ -7,6 +7,7 @@ use Validator;
 use App\Models\Group;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Question;
 use Auth;
 
 class GroupController extends Controller
@@ -169,7 +170,7 @@ class GroupController extends Controller
            'group' => $group,
            'posts' => $posts,
            'questions' => $questions,
-           'members' => $members
+           'members' => $members,
            ]);
     }
     

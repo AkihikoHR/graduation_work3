@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Answer extends Model
 {
     use HasFactory;
     
-     protected $guarded = [
+    protected $guarded = [
       'id',
       'created_at',
       'updated_at',
-    ];
-    
-    public function all_answers()
+     ];
+     
+    public function answer()
     {
-     return $this->hasMany(Answer::class)->orderBy('updated_at', 'desc');
+       return $this->belongsTo(Question::class);
     }
- 
 }
-
-

@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\Question;
-use App\Models\Group;
 use App\Models\Answer;
+use App\Models\Question;
 use Auth;
 
-class QuestionController extends Controller
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +27,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+
+        // return view('answer.create');
     }
 
     /**
@@ -39,16 +39,16 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $group_id = $request->group_id;
+        $question_id = $request->question_id;
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'question' => 'required | max:100',
+            'answer' => 'required' ,
             'image' => 'image | file',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('group.room', $group_id)
+                ->route('answer.reply', $question_id)
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -64,16 +64,15 @@ class QuestionController extends Controller
             $fileName = "";
         }
 
-        $question = new Question;
-        $question->user_id = Auth::user()->id;
-        $question->group_id = $request->group_id;
-        $question->question = $request->question;
-        $question->description = $request->description;
-        $question->image = $fileName;
-        $question->save();
+        $answer = new Answer;
+        $answer->user_id = Auth::user()->id;
+        $answer->question_id = $question_id;
+        $answer->answer = $request->answer;
+        $answer->image = $fileName;
+        $answer->save();
 
         // ルーティング「tweet.index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route('group.room', $group_id);
+        return redirect()->route('question.show',$question_id);
     }
 
     /**
@@ -84,16 +83,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-         $question = Question::find($id);
-         $group_id = $question->group_id;
-         $group = Group::find($group_id);
-         $answers = Question::find($id)->all_answers;
-    
-         return view('question.show', [
-           'question' => $question,
-           'group' => $group,
-           'answers' => $answers
-         ]);
+        //
     }
 
     /**
@@ -127,8 +117,16 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-         $group_id = Question::find($id)->group_id;
-         $result = Question::find($id)->delete();
-         return redirect()->route('group.room',$group_id);
+         $question_id = Answer::find($id)->question_id;
+         $result = Answer::find($id)->delete();
+         return redirect()->route('question.show',$question_id);
+    }
+    
+    public function reply($id)
+    {
+         $question = Question::find($id);
+         return view('answer.reply',[
+             'question' => $question
+         ]);
     }
 }

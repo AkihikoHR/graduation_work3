@@ -21,7 +21,7 @@
             <tbody>
               @foreach ($groups as $group)
               <tr class="hover:bg-grey-lighter">
-                <td class="py-4 px-6 border-b border-grey-light flex">
+                <td class="py-4 px-6 border-b border-grey-light flex items-center">
 
                   <div>
                      @if ($group->user_id === Auth::user()->id)

@@ -20,7 +20,7 @@
             <tbody>
               @foreach ($groups as $group)
               <tr class="hover:bg-grey-lighter">
-                <td class="py-4 px-6 border-b border-grey-light flex">
+                <td class="py-4 px-6 border-b border-grey-light flex items-center">
                   <h3 class="text-left font-bold text-lg text-grey-dark">{{$group->name}}</h3>
 
                   <div class="flex">
@@ -28,7 +28,11 @@
                       <form class="ml-5" action="{{ route('group.show',$group->id) }}" method="GET" class="text-left">
                         @csrf
                          <button type="submit" class="ml-4 w-full bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
-                         詳細を見る
+                           @if ($group->user_id === Auth::user()->id)
+                            管理画面
+                           @else
+                            詳細を見る
+                           @endif
                          </button>
                       </form>
                   </div>
