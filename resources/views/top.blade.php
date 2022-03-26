@@ -27,7 +27,7 @@
                         <div class="p-6 bg-white border-b border-gray-200">
                           <div class="text-center">
                             <h3 class="text-2xl font-bold leading-10">現在、{{$groups->count()}}組のグループが活動しています！</h3>
-                            <p class="text-lg leading-10">○○は同じ目標を持った仲間と一緒に学ぶことができるコミュニティです</p>
+                            <p class="text-lg leading-10">StudyRoomは同じ目標を持った仲間と一緒に学ぶことができるコミュニティです</p>
                             <p class="text-lg leading-10">ユーザー登録して自分に合った学習グループを探してみましょう！</p>
                           </div>
   

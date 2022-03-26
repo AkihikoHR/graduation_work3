@@ -72,7 +72,13 @@
                         @if ($answer->user_id === Auth::user()->id)
                          <p class="text-left text-red-600">自分の回答です</p>
                         @else
-                         <p class="text-left text-grey-dark">投稿者：{{$answer->user->name}}</p>
+                        
+                          @if ($answer->user->profile)
+                           <p class="text-left text-grey-dark">投稿者：{{$answer->user->profile->nickname}}</p>
+                           @else 
+                           <p class="text-left text-grey-dark">投稿者：{{$answer->user->name}}</p>
+                           @endif
+                    
                         @endif
                         
                            <p class="ml-4 text-left text-grey-dark">{{$answer->created_at}}</p>

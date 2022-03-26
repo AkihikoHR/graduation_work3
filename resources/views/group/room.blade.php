@@ -38,11 +38,15 @@
                         @if ($post->user_id === Auth::user()->id)
                          <p class="text-left text-red-600">あなたの投稿です</p>
                         @else
-                         <p class="text-left text-grey-dark">投稿者：{{$post->user->name}}</p>
-                        @endif
+                         
+                           @if ($post->user->profile)
+                           <p class="text-left text-grey-dark">投稿者：{{$post->user->profile->nickname}}</p>
+                           @else 
+                           <p class="text-left text-grey-dark">投稿者：{{$post->user->name}}</p>
+                           @endif
                         
+                        @endif
                          <p class="ml-4 text-left text-grey-dark">{{$post->created_at}}</p>
-
 
                         <!-- 🔽 条件分岐でログインしているユーザが投稿したpostのみ削除ボタンが表示される -->
                         @if ($post->user_id === Auth::user()->id || $group->user_id === Auth::user()->id)
@@ -118,7 +122,13 @@
                         @if ($question->user_id === Auth::user()->id)
                          <p class="text-left text-red-600">あなたの投稿です</p>
                         @else
-                         <p class="text-left text-grey-dark">投稿者：{{$question->user->name}}</p>
+                        
+                           @if ($question->user->profile)
+                           <p class="text-left text-grey-dark">投稿者：{{$question->user->profile->nickname}}</p>
+                           @else 
+                           <p class="text-left text-grey-dark">投稿者：{{$question->user->name}}</p>
+                           @endif
+                    
                         @endif
                         
                            <p class="ml-4 text-left text-grey-dark">{{$question->created_at}}</p>

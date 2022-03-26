@@ -15,6 +15,11 @@ class Question extends Model
       'updated_at',
     ];
     
+    public function user()
+    {
+     return $this->belongsTo(User::class);
+    }
+    
     public function all_answers()
     {
      return $this->hasMany(Answer::class)->orderBy('updated_at', 'desc');
