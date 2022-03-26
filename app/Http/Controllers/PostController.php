@@ -73,7 +73,12 @@ class PostController extends Controller
     public function show($id)
     {
          $post = Post::find($id);
-         return view('post.show', ['post' => $post]);
+         $group_id = $post->group_id;
+         $group = Group::find($group_id);
+         return view('post.show', [
+           'post' => $post,
+           'group' => $group
+           ]);
     }
 
     /**

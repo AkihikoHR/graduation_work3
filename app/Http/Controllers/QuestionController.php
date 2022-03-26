@@ -42,6 +42,7 @@ class QuestionController extends Controller
         // バリデーション
         $validator = Validator::make($request->all(), [
             'question' => 'required | max:100',
+            'image' => 'image | file',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
@@ -52,9 +53,23 @@ class QuestionController extends Controller
         }
         // create()は最初から用意されている関数
         // 戻り値は挿入されたレコードの情報
+        
+        
+        if ($file = $request->image) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
 
-        $data = $request->merge(['user_id' => Auth::user()->id])->all();
-        $result = Question::create($data);
+        $question = new Question;
+        $question->user_id = Auth::user()->id;
+        $question->group_id = $request->group_id;
+        $question->question = $request->question;
+        $question->description = $request->description;
+        $question->image = $fileName;
+        $question->save();
 
         // ルーティング「tweet.index」にリクエスト送信（一覧ページに移動）
         return redirect()->route('group.room', $group_id);
@@ -68,7 +83,13 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+         $question = Question::find($id);
+         $group_id = $question->group_id;
+         $group = Group::find($group_id);
+         return view('question.show', [
+           'question' => $question,
+           'group' => $group
+         ]);
     }
 
     /**

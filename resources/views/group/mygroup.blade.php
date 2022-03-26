@@ -47,7 +47,7 @@
                          入室する
                          </button>
                       </form>
-                     <!-- グループに入室するボタン -->
+                     <!-- グループの詳細ボタン -->
                       <form class="ml-5" action="{{ route('group.show',$group->id) }}" method="GET" class="text-left">
                         @csrf
                          <button type="submit" class="ml-4 w-full bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">

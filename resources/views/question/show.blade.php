@@ -1,9 +1,9 @@
-<!-- resources/views/post/show.blade.php -->
+<!-- resources/views/question/show.blade.php -->
 
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('学習内容の詳細') }}
+      {{ __('質問／出題内容の詳細') }}
     </h2>
   </x-slot>
 
@@ -13,23 +13,27 @@
         <div class="p-6 bg-white border-b border-gray-200">
           <div class="mb-6">
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">学んだテーマ／カテゴリー</p>
-              <p class="py-2 px-3 text-grey-darkest" id="name">
-                {{$post->post}}
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">質問するテーマ／カテゴリー</p>
+              <p class="py-2 px-3 text-grey-darkest" id="question">
+                {{$question->question}}
               </p>
             </div>
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">学習内容</p>
-              <p class="py-2 px-3 text-grey-darkest whitespace-pre-wrap" id="description">{{$post->description}}</p>
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">質問内容</p>
+              <p class="py-2 px-3 text-grey-darkest whitespace-pre-wrap" id="description">{{$question->description}}</p>
+            </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">添付画像</p>
+              <img src="../../uploads/{{ $question->image }}" class="w-full h-full">
             </div>
             <div class="flex flex-col mb-4">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">投稿時間</p>
               <p class="py-2 px-3 text-grey-darkest" id="end_date">
-                {{$post->created_at}}
+                {{$question->created_at}}
               </p>
             </div>
              <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">報告先のグループ</p>
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">質問したグループ</p>
               <p class="py-2 px-3 text-grey-darkest" id="name">
                 {{$group->name}}
               </p>

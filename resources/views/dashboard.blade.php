@@ -43,6 +43,13 @@
                            </button>
                         </form>
                         @endif
+                        
+                        <form class="ml-5 mb-1" action="{{ route('post.show',$post->id) }}" method="GET" class="text-left">
+                          @csrf
+                           <button type="submit" class="ml-4 w-full bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                            もっと見る
+                           </button>
+                        </form>
                     </div>
                   </div>
                 </td>
@@ -83,6 +90,13 @@
                            </button>
                         </form>
                         @endif
+                        
+                         <form class="ml-5 mb-1" action="{{ route('question.show',$question->id) }}" method="GET" class="text-left">
+                          @csrf
+                           <button type="submit" class="ml-4 w-full bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                            もっと見る
+                           </button>
+                        </form>
                     </div>
                   </div>
                 </td>
